@@ -1,0 +1,17 @@
+
+
+Variable expansion
+ - Quote variables, see Quoting section below.
+ - Don't brace-quote single character shell specials / positional parameters, unless strictly necessary or avoiding deep confusion. 
+     echo "Positional: $1" "$5" "$3"
+     echo "Specials: !=$!, -=$-, _=$_. ?=$?, #=$# *=$* @=$@ \$=$$ ..."
+     echo "many parameters: ${10}"
+ - Prefer brace-quoting all other variables.
+
+
+Quoting
+  - Always quote strings containing variables, command substitutions, spaces or shell meta characters, unless careful unquoted expansion is required.
+  - Prefer quoting strings that are "words" (as opposed to command options or path names).
+  - Never quote literal integers.
+  - Be aware of the quoting rules for pattern matches in [[.
+  - Use "$@" unless you have a specific reason to use $*.
